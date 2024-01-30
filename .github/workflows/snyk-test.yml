@@ -1,0 +1,15 @@
+name: Snyk Test PR workflow
+on:
+  push:
+    branches:
+      - ts/snyk-test-pr-workflow
+  workflow_dispatch: 
+jobs:
+  security:
+    uses: guardian/.github/.github/workflows/sbt-node-snyk-pr.yml@main
+    with:
+      ORG: guardian-test
+      SKIP_NODE: true
+      SKIP_SBT: true
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
